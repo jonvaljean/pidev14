@@ -6,6 +6,7 @@ import sys
 import time
 import smbus #use smbus for i2c
 from time import sleep
+from bottle import route, run, template, get, post, request
 
 #return values
 RET_ERROR	= -1
@@ -345,6 +346,62 @@ if COLUMN_LABEL == "LEFT":
 	#run the programm
 if __name__ == "__main__":
 
+	@route('/hello/<name>')
+	def index(name):
+		return template('<b>Hello {{name}}</b>!',name=name)
+		print("in bottlepy route  ")
+
+	@route('/lw14')
+	def lw14():
+		return'''
+			<form action="/lw14" method="POST">
+				<br> Group or Single Box: <br>
+				<input type="radio" name="command_type" value="group" /> Group.  Value: <input type="text" name="group_id"> <br>
+				<input type="radio" name="command_type" value="single" /> Single.  Value: <input type="text" name="single_id"> <br>
+				<input value="Do it !" type="submit" />
+			</form>
+		'''
+	@route('/lw14new')
+	def lw14new():
+		return'''
+			<form action="/lw14_group" method="POST">
+				<br>
+				Group <input type="text" name="group_id"/>  : Intensity value <input type="text" name="group_intensity"/> <input value="Group" type="submit" />
+			</form>
+			<form action="/lw14_single" method="POST">
+				<br>
+				Group <input type="text" name="single_id"/>  : Intensity value <input type="text" name="single_intensity"/> <input value="Single" type="submit" />
+			</form>
+		'''
+		
+	@route('/lw14', method='POST')
+	def do_lw14():
+		g_id = int(request.forms.get('group_id'))
+		s_id = request.forms.get('single_id')
+		print("in post handler, group_id, single_id are:  ",g_id,s_id)
+		return '''
+		In post handler
+		'''
+
+	@route('/lw14_group', method='POST')
+	def lw14_group():
+		g_id = int(request.forms.get('group_id'))
+		g_intensity = int(request.forms.get('group_intensity'))
+		print("in lw14_group handler, g_id and g_intensity are ",g_id,g_intensity)
+		
+	@route('/lw14_single', method='POST')
+	def lw14_single():
+		s_id = int(request.forms.get('single_id'))
+		s_intensity = int(request.forms.get('single_intensity'))
+		print("in lw14_group handler, s_id and s_intensity are ",s_id,s_intensity)
+		
+	
+	run(host='localhost', port=8080, debug=True)
+	print("in bottlepy after run   ")
+		
+		
+		
+"""	
 	#if some arguments given, use this as data. 
 	#len = 3, because filename is [0], dali-address is [1], dali-data is[2]
 	if len(sys.argv) == 3:
@@ -359,11 +416,14 @@ if __name__ == "__main__":
 	else:
 		dali_device = 1			#0...63 for single, or 0...16 for group
 		dali_value = 200			#DACP values (dimming output) 0...254 allowed
+"""
 
+def doit():
 	DaliBus_Bar1 = lw14()														#Create a new lw14 class
 	DaliBus_Bar1.SetI2cBus(LW14_I2C_ADDRESS_1)									#Set I2C-Address to the class
   
   #Cycle through bar_group to set each box to its group
+"""
   
 	col_id = 0
 	for column in bar_group:
@@ -372,8 +432,8 @@ if __name__ == "__main__":
 		for dali_device in column:
 			dali_value = col_id
 			print('dali_device, col_id:  ',dali_device, col_id)
-			DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_CMD)	#Must be in CMD mode !
-			DaliBus_Bar1.StoreGroup(dali_value)													#Set device into group
+			#DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_CMD)	#Must be in CMD mode !
+			#DaliBus_Bar1.StoreGroup(dali_value)													#Set device into group
   
   #Test all columns turning on and off
   
@@ -427,3 +487,6 @@ if __name__ == "__main__":
 	#DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_CMD)
 	#data = DaliBus_Bar1.QueryMax()
 	#print ("Read: {0}".format(data))
+	
+	
+	"""
