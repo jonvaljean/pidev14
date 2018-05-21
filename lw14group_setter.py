@@ -124,7 +124,7 @@ DALI_DEFAULT_FADE_TIME = 0
 
 
 #Select I2C interface UNCOMMENT on RPI
-#i2c = smbus.SMBus(1)
+i2c = smbus.SMBus(1)
 
 class lw14:
 	def __init__(self):
@@ -171,9 +171,9 @@ class lw14:
 		while(1):
 			
 			r = self._i2c_read(LW14_REG_STATUS) #returns an array
-
+			#print("in WaitForReady, r is", r)
 			#debug output
-			#print ("Status: {0}".format(r[0]))
+			print ("Status: {0}".format(r[0]))
 		
 			if (r[0] & LW14_STATE_BUS_FAULT) == LW14_STATE_BUS_FAULT:
 				return RET_ERROR
@@ -371,10 +371,11 @@ if __name__ == "__main__":
 		print("col_id is",col_id)
 		for dali_device in column:
 			dali_value = col_id
-			print('dali_device, col_id:  ',dali_device, col_id)
+			print('dali_device, dali_value:  ',dali_device, dali_value)
 			DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_CMD)	#Must be in CMD mode !
 			DaliBus_Bar1.StoreGroup(dali_value)													#Set device into group
-  
+			sleep(0.5)
+			
   #Test all columns turning on and off
   
 	col_id = 0
@@ -382,11 +383,11 @@ if __name__ == "__main__":
 		col_id +=1
 		print("col_id is",col_id)
 		dali_device = col_id
-		dali_value = 255
+		dali_value = 254
 		DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_GROUP, LW14_MODE_DACP)				#Must be in CMD mode !
 		DaliBus_Bar1.SendData(dali_value)													#Send data to group
 		print("turned on ....")
-		sleep(0,5)
+		sleep(1)
 		dali_value = 0
 		DaliBus_Bar1.SendData(dali_value)	
 		print("turned off ...")
