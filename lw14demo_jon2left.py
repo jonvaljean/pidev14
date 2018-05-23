@@ -87,7 +87,7 @@ class lw14:
 		return self._i2c_send(data)
 
 
-dali_tab = [(4,200),(29,200),(26,200),(30,180),(7,190)]
+dali_tab = [(19,200),(21,200),(2,200),(12,180),(22,190),(27,150)]
 
 
 
@@ -118,7 +118,7 @@ if __name__ == "__main__":
 		dali_value = j
 		print("in loop, dali_device, dali_value are  ",dali_device,dali_value)
 		#DaliBus_Bar1 = lw14()														#Create a new lw14 class
-		DaliBus_Bar1.SetI2cBus(LW14_I2C_ADDRESS_1)									#Set I2C-Address to the class
+		DaliBus_Bar1.SetI2cBus(LW14_I2C_ADDRESS_2)									#Set I2C-Address to the class
 		DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_DACP)	#Set the dali address for send data, in this case single device and DACP bit
 		DaliBus_Bar1.SendData(dali_value)											#Send data into the dali bus
 		print("sleeping")

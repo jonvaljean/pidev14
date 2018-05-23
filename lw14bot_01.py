@@ -16,7 +16,7 @@ RET_SUCCESS	= 1
 
 #I2C device addresses
 LW14_I2C_ADDRESS_1	= 0x23 #7Bit default address from LW14
-LW14_I2C_ADDRESS_2	= 0x00 #7Bit 
+LW14_I2C_ADDRESS_2	= 0x2f #7Bit 
 LW14_I2C_ADDRESS_3	= 0x00 #7Bit 
 LW14_I2C_ADDRESS_4	= 0x00 #7Bit 
 
@@ -125,7 +125,7 @@ DALI_DEFAULT_FADE_TIME = 0
 
 
 #Select I2C interface UNCOMMENT on RPI
-#i2c = smbus.SMBus(1)
+i2c = smbus.SMBus(1)
 
 class lw14:
 	def __init__(self):
@@ -316,8 +316,8 @@ class lw14:
 		return (r & 0xF0) >> 4
 
 bar_group = []
-#COLUMN_LABEL = "LEFT"
-COLUMN_LABEL = "RIGHT"
+COLUMN_LABEL = "LEFT"
+#COLUMN_LABEL = "RIGHT"
 
 #colums for right side
 if COLUMN_LABEL == "RIGHT":
@@ -342,6 +342,28 @@ if COLUMN_LABEL == "LEFT":
 	print("bar_group is ",bar_group)
 	print("bar_group[3] is ", bar_group[3])
 
+
+def doit_single(DaliBus_Bar1,device, value):
+														#Create a new lw14 class
+	DaliBus_Bar1.SetI2cBus(LW14_I2C_ADDRESS_2)									#Set I2C-Address to the class
+	dali_device = device
+	dali_value = value
+	DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_DACP)	    #Set the dali address for send data, in this case single device and DACP bit
+	DaliBus_Bar1.SendData(dali_value)												#Send data into the dali bus
+	DaliBus_Bar1.WaitForReady() 													#Wait until DALI is ready. DON'T FORGET IT!!!!!
+	return
+
+
+def doit_group(DaliBus_Bar1,col_id,value):
+	#DaliBus_Bar1 = lw14()														#Create a new lw14 class
+	DaliBus_Bar1.SetI2cBus(LW14_I2C_ADDRESS_2)									#Set I2C-Address to the class
+	dali_device = col_id
+	dali_value = value
+	DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_GROUP, LW14_MODE_DACP)				#Must be in CMD mode !
+	DaliBus_Bar1.SendData(dali_value)													#Send data to group
+	DaliBus_Bar1.WaitForReady() 													#Wait until DALI is ready. DON'T FORGET IT!!!!!
+	return
+	
 	
 	#run the programm
 if __name__ == "__main__":
@@ -351,8 +373,8 @@ if __name__ == "__main__":
 		return template('<b>Hello {{name}}</b>!',name=name)
 		print("in bottlepy route  ")
 
-	@route('/lw14')
-	def lw14():
+	@route('/foo')
+	def foo():
 		return'''
 			<form action="/lw14" method="POST">
 				<br> Group or Single Box: <br>
@@ -362,7 +384,7 @@ if __name__ == "__main__":
 			</form>
 		'''
 	@route('/lw14new')
-	def lw14new():
+	def lw14_new():
 		return'''
 			<form action="/lw14_group" method="POST">
 				<br>
@@ -374,8 +396,8 @@ if __name__ == "__main__":
 			</form>
 		'''
 		
-	@route('/lw14', method='POST')
-	def do_lw14():
+	@route('/foo', method='POST')
+	def do_foo():
 		g_id = int(request.forms.get('group_id'))
 		s_id = request.forms.get('single_id')
 		print("in post handler, group_id, single_id are:  ",g_id,s_id)
@@ -385,16 +407,19 @@ if __name__ == "__main__":
 
 	@route('/lw14_group', method='POST')
 	def lw14_group():
+		DaliBus_Bar1 = lw14()														#Create a new lw14 class
+		print("in handler, DaliBus_Bar1 is  ", DaliBus_Bar1)
 		g_id = int(request.forms.get('group_id'))
 		g_intensity = int(request.forms.get('group_intensity'))
 		print("in lw14_group handler, g_id and g_intensity are ",g_id,g_intensity)
+		doit_group(DaliBus_Bar1,g_id,g_intensity)
 		
 	@route('/lw14_single', method='POST')
 	def lw14_single():
 		s_id = int(request.forms.get('single_id'))
 		s_intensity = int(request.forms.get('single_intensity'))
 		print("in lw14_group handler, s_id and s_intensity are ",s_id,s_intensity)
-		
+		doit_single(s_id,s_intensity)
 	
 	run(host='localhost', port=8080, debug=True)
 	print("in bottlepy after run   ")
@@ -417,10 +442,6 @@ if __name__ == "__main__":
 		dali_device = 1			#0...63 for single, or 0...16 for group
 		dali_value = 200			#DACP values (dimming output) 0...254 allowed
 """
-
-def doit():
-	DaliBus_Bar1 = lw14()														#Create a new lw14 class
-	DaliBus_Bar1.SetI2cBus(LW14_I2C_ADDRESS_1)									#Set I2C-Address to the class
   
   #Cycle through bar_group to set each box to its group
 """
