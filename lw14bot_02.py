@@ -6,6 +6,7 @@ import sys
 import time
 import smbus #use smbus for i2c
 from time import sleep
+from bottle import route, run, template, get, post, request
 
 #return values
 RET_ERROR	= -1
@@ -14,8 +15,8 @@ RET_SUCCESS	= 1
 
 
 #I2C device addresses
-LW14_I2C_ADDRESS_1	= 0x23 #7Bit Address Regal 2 Right
-LW14_I2C_ADDRESS_2	= 0x2F #7Bit Address Regal 1 Left
+LW14_I2C_ADDRESS_1	= 0x23 #7Bit default address from LW14
+LW14_I2C_ADDRESS_2	= 0x2f #7Bit 
 LW14_I2C_ADDRESS_3	= 0x00 #7Bit 
 LW14_I2C_ADDRESS_4	= 0x00 #7Bit 
 
@@ -171,9 +172,9 @@ class lw14:
 		while(1):
 			
 			r = self._i2c_read(LW14_REG_STATUS) #returns an array
-			#print("in WaitForReady, r is", r)
+
 			#debug output
-			print ("Status: {0}".format(r[0]))
+			#print ("Status: {0}".format(r[0]))
 		
 			if (r[0] & LW14_STATE_BUS_FAULT) == LW14_STATE_BUS_FAULT:
 				return RET_ERROR
@@ -341,10 +342,72 @@ if COLUMN_LABEL == "LEFT":
 	print("bar_group is ",bar_group)
 	print("bar_group[3] is ", bar_group[3])
 
+
+def doit_single(DaliBus_Bar1,device, value):
+	DaliBus_Bar1.SetI2cBus(LW14_I2C_ADDRESS_2)									#Set I2C-Address to the class
+	dali_device = device
+	dali_value = value
+	DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_DACP)	    #Set the dali address for send data, in this case single device and DACP bit
+	DaliBus_Bar1.SendData(dali_value)												#Send data into the dali bus
+	DaliBus_Bar1.WaitForReady() 													#Wait until DALI is ready. DON'T FORGET IT!!!!!
+	return
+
+
+def doit_group(DaliBus_Bar1,col_id,value):
+	DaliBus_Bar1.SetI2cBus(LW14_I2C_ADDRESS_2)									#Set I2C-Address to the class
+	dali_device = col_id
+	dali_value = value
+	DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_GROUP, LW14_MODE_DACP)				#Must be in CMD mode !
+	DaliBus_Bar1.SendData(dali_value)													#Send data to group
+	DaliBus_Bar1.WaitForReady() 													#Wait until DALI is ready. DON'T FORGET IT!!!!!
+	return
+	
 	
 	#run the programm
 if __name__ == "__main__":
 
+	@route('/hello/<name>')
+	def index(name):
+		return template('<b>Hello {{name}}</b>!',name=name)
+		print("in bottlepy route  ")
+
+
+	@route('/lw14ask')
+	def lw14ask():
+		return'''
+			<form action="/lw14_group" method="POST">
+				<br>
+				Group <input type="text" name="group_id"/>  : Intensity value <input type="text" name="group_intensity"/> <input value="Group" type="submit" />
+			</form>
+			<form action="/lw14_single" method="POST">
+				<br>
+				Single <input type="text" name="single_id"/>  : Intensity value <input type="text" name="single_intensity"/> <input value="Single" type="submit" />
+			</form>
+		'''
+		
+	@route('/lw14_group', method='POST')
+	def lw14_group():
+		DaliBus_Bar1 = lw14()														#Create a new lw14 class
+		print("in handler, DaliBus_Bar1 is  ", DaliBus_Bar1)
+		g_id = int(request.forms.get('group_id'))
+		g_intensity = int(request.forms.get('group_intensity'))
+		print("in lw14_group handler, g_id and g_intensity are ",g_id,g_intensity)
+		doit_group(DaliBus_Bar1,g_id,g_intensity)
+		
+	@route('/lw14_single', method='POST')
+	def lw14_single():
+		DaliBus_Bar1 = lw14()
+		s_id = int(request.forms.get('single_id'))
+		s_intensity = int(request.forms.get('single_intensity'))
+		print("in lw14_single handler, s_id and s_intensity are ",s_id,s_intensity)
+		doit_single(DaliBus_Bar1,s_id,s_intensity)
+	
+	run(host='0.0.0.0', port=80, debug=True)
+	print("in bottlepy after run   ")
+		
+		
+		
+"""	
 	#if some arguments given, use this as data. 
 	#len = 3, because filename is [0], dali-address is [1], dali-data is[2]
 	if len(sys.argv) == 3:
@@ -359,11 +422,10 @@ if __name__ == "__main__":
 	else:
 		dali_device = 1			#0...63 for single, or 0...16 for group
 		dali_value = 200			#DACP values (dimming output) 0...254 allowed
-
-	DaliBus_Bar1 = lw14()														#Create a new lw14 class
-	DaliBus_Bar1.SetI2cBus(LW14_I2C_ADDRESS_2)									#Set I2C-Address to the class
+"""
   
   #Cycle through bar_group to set each box to its group
+"""
   
 	col_id = 0
 	for column in bar_group:
@@ -371,11 +433,10 @@ if __name__ == "__main__":
 		print("col_id is",col_id)
 		for dali_device in column:
 			dali_value = col_id
-			print('dali_device, dali_value:  ',dali_device, dali_value)
-			DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_CMD)	#Must be in CMD mode !
-			DaliBus_Bar1.StoreGroup(dali_value)													#Set device into group
-			sleep(0.5)
-			
+			print('dali_device, col_id:  ',dali_device, col_id)
+			#DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_CMD)	#Must be in CMD mode !
+			#DaliBus_Bar1.StoreGroup(dali_value)													#Set device into group
+  
   #Test all columns turning on and off
   
 	col_id = 0
@@ -383,11 +444,11 @@ if __name__ == "__main__":
 		col_id +=1
 		print("col_id is",col_id)
 		dali_device = col_id
-		dali_value = 254
+		dali_value = 255
 		DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_GROUP, LW14_MODE_DACP)				#Must be in CMD mode !
 		DaliBus_Bar1.SendData(dali_value)													#Send data to group
 		print("turned on ....")
-		sleep(1)
+		sleep(0,5)
 		dali_value = 0
 		DaliBus_Bar1.SendData(dali_value)	
 		print("turned off ...")
@@ -428,3 +489,6 @@ if __name__ == "__main__":
 	#DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_CMD)
 	#data = DaliBus_Bar1.QueryMax()
 	#print ("Read: {0}".format(data))
+	
+	
+	"""
