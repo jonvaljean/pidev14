@@ -19,6 +19,12 @@ LW14_I2C_ADDRESS_2	= 0x2F #7Bit Address Regal 1 Left
 LW14_I2C_ADDRESS_3	= 0x27 #7Bit Address Front Ambience
 LW14_I2C_ADDRESS_4	= 0x2B #7Bit Address Back Ambience
 
+I2C_values = {}
+I2C_values[1]=LW14_I2C_ADDRESS_1
+I2C_values[2]=LW14_I2C_ADDRESS_2
+I2C_values[3]=LW14_I2C_ADDRESS_3
+I2C_values[4]=LW14_I2C_ADDRESS_4
+
 #Register of LED-Warrior14
 LW14_REG_STATUS			= 0x00 # Read only
 LW14_REG_COMMAND		= 0x01 # Write/Read
@@ -314,34 +320,10 @@ class lw14:
 		r = self.ReadQuery(DALI_QUERY_FADE_TIME_RATE)	
 		return (r & 0xF0) >> 4
 
-bar_group = []
-COLUMN_LABEL = "LEFT"
-#COLUMN_LABEL = "RIGHT"
 
-#colums for right side
-if COLUMN_LABEL == "RIGHT":
-	bar_group.append((28,8,4,0,14,27))
-	bar_group.append((16,37,17,29,22,10))
-	bar_group.append((1,13,15,26,39,19))
-	bar_group.append((5,32,20,42,9,25,40))
-	bar_group.append((31,21,11,6,30,36))
-	bar_group.append((34,35,12,38,41,33,18))
-	bar_group.append((43,2,23,3,7,24))  
-	print("bar_group is ",bar_group)
-	print("bar_group[3] is ", bar_group[3])
-
-if COLUMN_LABEL == "LEFT":
-#colums for left side
-	bar_group.append((4,0,25,19,9,16))
-	bar_group.append((31,23,11,18,21,33))
-	bar_group.append((8,18,2,7,1,24,15))
-	bar_group.append((5,10,6,12,34,13))
-	bar_group.append((28,35,3,26,14,22))
-	bar_group.append((32,20,30,29,36,27))
-	print("bar_group is ",bar_group)
-	print("bar_group[3] is ", bar_group[3])
-#modify this model according to requirements of setting
-NR_ARGS = 3
+	
+	#modify this model according to requirements of setting
+NR_ARGS = 2
 
 
 #create dictionary mapping box names to dali addresses
@@ -351,16 +333,16 @@ for line in F:
 	box_dict[line.rstrip().split(',')[0]]=int(line.rstrip().split(',')[1])
 	
 #create dictionary mapping column to appropriate dali network
-col_dict = {}
+net_dict = {}
 F=open('col_to_dali_net_map.txt')
 for line in F:
-	col_dict[line.rstrip().split(',')[0]]=int(line.rstrip().split(',')[1])
+	net_dict[line.rstrip().split(',')[0]]=int(line.rstrip().split(',')[1])
 
 #create dictionary mapping column to group number
 grp_dict = {}
 F=open('col_to_dali_net_map.txt')
 for line in F:
-	col_dict[line.rstrip().split(',')[0]]=int(line.rstrip().split(',')[2])	
+	grp_dict[line.rstrip().split(',')[0]]=int(line.rstrip().split(',')[2])	
 
 	
 	#run the programm
@@ -369,9 +351,9 @@ if __name__ == "__main__":
 	#if some arguments given, use this as data. 
 	#len = 3, because filename is [0], dali-address is [1], dali-data is[2]
 	if len(sys.argv) == NR_ARGS+1:
-		parm_1 = int(sys.argv[1])
+		parm_1 = sys.argv[1]
 		parm_2 = int(sys.argv[2])
-		parm_3 = int(sys.argv[3])
+		#parm_3 = int(sys.argv[3])
 
 		#print out the args
 		#for eachArg in sys.argv:
@@ -383,71 +365,18 @@ if __name__ == "__main__":
 		sys.exit(0)
 		
 	DaliBus_Bar1 = lw14()														#Create a new lw14 class
-	
-	DaliBus_Bar1.SetI2cBus(LW14_I2C_ADDRESS_2)									#Set I2C-Address to the class
-  
-  #Cycle through bar_group to set each box to its group
-  
-	col_id = 0
-	for column in bar_group:
-		col_id +=1
-		print("col_id is",col_id)
-		for dali_device in column:
-			dali_value = col_id
-			print('dali_device, dali_value:  ',dali_device, dali_value)
-			DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_CMD)	#Must be in CMD mode !
-			DaliBus_Bar1.StoreGroup(dali_value)													#Set device into group
-			sleep(0.5)
-			
-  #Test all columns turning on and off
-  
-	col_id = 0
-	for column in bar_group:
-		col_id +=1
-		print("col_id is",col_id)
-		dali_device = col_id
-		dali_value = 254
-		DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_GROUP, LW14_MODE_DACP)				#Must be in CMD mode !
-		DaliBus_Bar1.SendData(dali_value)													#Send data to group
-		print("turned on ....")
-		sleep(1)
-		dali_value = 0
-		DaliBus_Bar1.SendData(dali_value)	
-		print("turned off ...")
-		sleep(1)
-  
+	dali_bus = I2C_values[net_dict[parm_1[0]]]
+	DaliBus_Bar1.SetI2cBus(dali_bus)									#Set I2C-Address to the class
+  dali_device = box_dict[parm_1]
+	dali_value = parm_2
+
 	#Send Data test
-	#DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_DACP)	    #Set the dali address for send data, in this case single device and DACP bit
+	DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_DACP)	    #Set the dali address for send data, in this case single device and DACP bit
 	#DaliBus_Bar1.SetDaliAddress(LW14_BROADCAST, LW14_ADR_GROUP, LW14_MODE_DACP)	#Set the dali as broadcast
-	#DaliBus_Bar1.SendData(dali_value)												#Send data into the dali bus
-	#DaliBus_Bar1.WaitForReady() 													#Wait until DALI is ready. DON'T FORGET IT!!!!!
+	DaliBus_Bar1.SendData(dali_value)												#Send data into the dali bus
+	DaliBus_Bar1.WaitForReady() 													#Wait until DALI is ready. DON'T FORGET IT!!!!!
 
 
 
 
-	#Store tests
-	#DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_CMD)	#Must be in CMD mode !
 	
-	#DaliBus_Bar1.SetDTR(dali_value)													#Set a value into the DTR
-	#DaliBus_Bar1.WaitForReady() 												#Wait until DALI is ready. DON'T FORGET IT!!!!!
-
-	#DaliBus_Bar1.StoreScene(dali_value)			#Store DTR into scene 1 for the selected device (dali_device)
-	#DaliBus_Bar1.StoreMax()						#Store DTR as default MAX
-	
-
-
-
-	#Group tests
-	#DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_CMD)	#Must be in CMD mode !
-	#DaliBus_Bar1.StoreGroup(dali_value)													#Set device into group
-	#DaliBus_Bar1.RemoveGroup(dali_value)												#Remove from group
-
-	#DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_GROUP, LW14_MODE_DACP)				#Must be in CMD mode !
-	#DaliBus_Bar1.SendData(dali_value)													#Send data to group
-
-
-	#Query/Read tests
-	#Read data from device. Use this only for devices. Groups or broadcast is not allowed!
-	#DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_CMD)
-	#data = DaliBus_Bar1.QueryMax()
-	#print ("Read: {0}".format(data))
