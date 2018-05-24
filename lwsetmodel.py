@@ -341,24 +341,26 @@ if COLUMN_LABEL == "LEFT":
 	print("bar_group is ",bar_group)
 	print("bar_group[3] is ", bar_group[3])
 
-	#create dictionary mapping box names to dali addresses
-	box_dict = {}
-	F=open('box_to_dali_map.txt')
-	for line in F:
-		box_dict[line.rstrip().split(',')[0]]=int(line.rstrip().split(',')[1])
+NR_ARGS = 3
+#create dictionary mapping box names to dali addresses
+box_dict = {}
+F=open('box_to_dali_map.txt')
+for line in F:
+	box_dict[line.rstrip().split(',')[0]]=int(line.rstrip().split(',')[1])
 	
 	#run the programm
 if __name__ == "__main__":
 
 	#if some arguments given, use this as data. 
 	#len = 3, because filename is [0], dali-address is [1], dali-data is[2]
-	if len(sys.argv) == 3:
+	if len(sys.argv) == NR_ARGS+1:
 		parm_1 = int(sys.argv[1])
 		parm_2 = int(sys.argv[2])
+		parm_3 = int(sys.argv[3])
 
 		#print out the args
-		#for eachArg in sys.argv:
-		#	print eachArg
+		for eachArg in sys.argv:
+			print eachArg
 
 	#If no arguments ar set or to much send this to dali
 	else:
