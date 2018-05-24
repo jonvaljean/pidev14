@@ -334,7 +334,7 @@ if COLUMN_LABEL == "LEFT":
 #colums for left side
 	bar_group.append((4,0,25,19,9,16))
 	bar_group.append((31,23,11,18,21,33))
-	bar_group.append((8,18,2,7,1,24,15))
+	bar_group.append((8,17,2,7,1,24,15))
 	bar_group.append((5,10,6,12,34,13))
 	bar_group.append((28,35,3,26,14,22))
 	bar_group.append((32,20,30,29,36,27))
