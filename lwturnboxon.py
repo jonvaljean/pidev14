@@ -179,7 +179,7 @@ class lw14:
 			r = self._i2c_read(LW14_REG_STATUS) #returns an array
 			#print("in WaitForReady, r is", r)
 			#debug output
-			print ("Status: {0}".format(r[0]))
+			#print ("Status: {0}".format(r[0]))
 		
 			if (r[0] & LW14_STATE_BUS_FAULT) == LW14_STATE_BUS_FAULT:
 				return RET_ERROR
@@ -367,7 +367,7 @@ if __name__ == "__main__":
 	DaliBus_Bar1 = lw14()														#Create a new lw14 class
 	dali_bus = I2C_values[net_dict[parm_1[0]]]
 	DaliBus_Bar1.SetI2cBus(dali_bus)									#Set I2C-Address to the class
-  dali_device = box_dict[parm_1]
+	dali_device = box_dict[parm_1]
 	dali_value = parm_2
 
 	#Send Data test
