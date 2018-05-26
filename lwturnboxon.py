@@ -37,9 +37,9 @@ if __name__ == "__main__":
 	
 		#choose between broadcast and single device. 255 is gotten from map table if x or y is chosen
 	if dali_device == 255:
-		dalibus.SetDaliAddress(LW14_BROADCAST, LW14_ADR_GROUP, LW14_MODE_CMD)	
+		DaliBus_Bar1.SetDaliAddress(LW14_BROADCAST, LW14_ADR_GROUP, LW14_MODE_CMD)	
 	else:
-		dalibus.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_CMD)
+		DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_CMD)
 	
 	dali_value = DALI_MAX
 
