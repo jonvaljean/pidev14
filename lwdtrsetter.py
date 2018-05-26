@@ -41,7 +41,7 @@ if __name__ == "__main__":
 	
 	dali_value = parm_2
 
-	DaliBus_Bar1.SetDtR(dali_value)
+	DaliBus_Bar1.SetDTR(dali_value)
 	DaliBus_Bar1.WaitForReady()
 
 
