@@ -38,11 +38,19 @@ if __name__ == "__main__":
 	dali_bus = I2C_values[net_dict[parm_1[0]]]
 	DaliBus_Bar1.SetI2cBus(dali_bus)									#Set I2C-Address to the class
 	dali_device = box_dict[parm_1]
+	
+		
+		#choose between broadcast and single device. 255 is gotten from map table if x or y is chosen
+	if dali_device == 255:
+		DaliBus_Bar1.SetDaliAddress(LW14_BROADCAST, LW14_ADR_GROUP, LW14_MODE_CMD)	
+	else:
+		DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_CMD)
 	dali_value = parm_2
 
 	#Send Data test
-	DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_DACP)	    #Set the dali address for send data, in this case single device and DACP bit
+	#DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_DACP)	    #Set the dali address for send data, in this case single device and DACP bit
 	#DaliBus_Bar1.SetDaliAddress(LW14_BROADCAST, LW14_ADR_GROUP, LW14_MODE_DACP)	#Set the dali as broadcast
+	
 	DaliBus_Bar1.SendData(dali_value)												#Send data into the dali bus
 	DaliBus_Bar1.WaitForReady() 													#Wait until DALI is ready. DON'T FORGET IT!!!!!
 
