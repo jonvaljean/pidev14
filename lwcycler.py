@@ -38,10 +38,12 @@ if __name__ == "__main__":
 	F.seek(0)
 	print("in F.seek")
 	cmd_list = F.read().splitlines()
-	
+	print("cmd_list is  ", cmd_list)
 	while True:
 		for line in cmd_list:
+			print("line is ", line)
 			for cmd in line.split(','):
+				print("cmd is  ", cmd)
 				dali_bus = I2C_values[net_dict[cmd[0]]]
 				DaliBus_Bar1.SetI2cBus(dali_bus)
 				dali_device = grp_dict[cmd[0]]
