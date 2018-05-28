@@ -27,7 +27,7 @@ if __name__ == "__main__":
 		filename	= sys.argv[1]
 		onval = sys.arg[2]
 		offval = sys.arg[3]
-		sleeptime = sys.arg[4
+		sleeptime = sys.arg[4]
 		
 		#If no arguments ar set or to much send this to dali
 	else:
@@ -48,7 +48,7 @@ if __name__ == "__main__":
 				DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_GROUP, LW14_MODE_DACP)	    #Set the dali address for send data, in this case single device and DACP bit
 				DaliBus_Bar1.SendData(dali_value)												#Send data into the dali bus
 				DaliBus_Bar1.WaitForReady() 													#Wait until DALI is ready. DON'T FORGET IT!!!!!
-				sleep(1)
+				sleep(sleeptime)
 
 
 
