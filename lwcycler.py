@@ -35,7 +35,7 @@ if __name__ == "__main__":
 		sys.exit(0)
 		
 	F=open(filename)
-	cmd_list = f.read().striplines()
+	cmd_list = F.read().striplines()
 	
 	while True:
 		for line in cmd_list:
