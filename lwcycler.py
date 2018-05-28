@@ -25,9 +25,9 @@ if __name__ == "__main__":
 	
 	if len(sys.argv) == NR_ARGS+1:
 		filename	= sys.argv[1]
-		onval = sys.arg[2]
-		offval = sys.arg[3]
-		sleeptime = sys.arg[4]
+		onval = sys.argv[2
+		offval = sys.argv[3]
+		sleeptime = sys.argv[4]
 		
 		#If no arguments ar set or to much send this to dali
 	else:
