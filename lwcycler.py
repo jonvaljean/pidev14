@@ -25,7 +25,7 @@ if __name__ == "__main__":
 	
 	if len(sys.argv) == NR_ARGS+1:
 		filename	= sys.argv[1]
-		onval = sys.argv[2
+		onval = sys.argv[2]
 		offval = sys.argv[3]
 		sleeptime = sys.argv[4]
 		
