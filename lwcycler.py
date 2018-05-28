@@ -34,7 +34,7 @@ if __name__ == "__main__":
 		print("Wrong number of parameters")
 		sys.exit(0)
 		
-	F=open('filename')
+	F=open(filename)
 	cmd_list = f.read().striplines()
 	
 	while True:
