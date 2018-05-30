@@ -33,7 +33,10 @@ if __name__ == "__main__":
 	else:
 		print("Wrong number of parameters")
 		sys.exit(0)
+	
 	print("net_dict is ",net_dict)	
+	print("I2C_values is ",I2C_values)
+	
 	F=open(filename)
 	F.seek(0)
 	print("in F.seek")
