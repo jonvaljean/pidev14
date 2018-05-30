@@ -33,7 +33,7 @@ if __name__ == "__main__":
 	else:
 		print("Wrong number of parameters")
 		sys.exit(0)
-		
+	print("net_dict is ",net_dict)	
 	F=open(filename)
 	F.seek(0)
 	print("in F.seek")
