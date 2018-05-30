@@ -47,9 +47,9 @@ if __name__ == "__main__":
 				cmd_element1 = cmd.split(',')[0]
 				cmd_element2 = cmd.split(',')[1]
 				print("cmd_element1, cmd_element2 are:  ", cmd_element1, cmd_element2)																
-				dali_bus = I2C_values[net_dict[cmd[0]]]
+				dali_bus = I2C_values[net_dict[cmd_element1]
 				DaliBus_Bar1.SetI2cBus(dali_bus)
-				dali_device = grp_dict[cmd[0]]
+				dali_device = grp_dict[cmd_element1]
 				if cmd_element2 == "on": dali_value = onval
 				if cmd_element2 == "off": dali_value = offval
 				DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_GROUP, LW14_MODE_DACP)	    #Set the dali address for send data, in this case single device and DACP bit
