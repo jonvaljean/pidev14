@@ -1,0 +1,13 @@
+a,on;c,on;e,on;o,on;q,on;s,on;u,on;b,off;d,off;f,off;p,off;r,off;t,off
+b,on;d,on;f,on;p,on;r,on;t,on;a,on;c,off;e,off;o,off;q,off;s,off;u,off
+c,on;e,on;o,on;q,on;s,on;u,on;b,on;d,off;f,off;p,off;r,off;t,off;a,off
+d,on;f,on;p,on;r,on;t,on;a,on;c,on;e,off;o,off;q,off;s,off;u,off;b,off
+e,on;o,on;q,on;s,on;u,on;b,on;d,on;f,off;p,off;r,off;t,off;a,off;c,off
+f,on;p,on;r,on;t,on;a,on;c,on;e,on;o,off;q,off;s,off;u,off;b,off;d,off
+o,on;q,on;s,on;u,on;b,on;d,on;f,on;p,off;r,off;t,off;a,off;c,off;e,off
+p,on;r,on;t,on;a,on;c,on;e,on;o,on;q,off;s,off;u,off;b,off;d,off;f,off
+q,on;s,on;u,on;b,on;d,on;f,on;p,on;r,off;t,off;a,off;c,off;e,off;o,off
+r,on;t,on;a,on;c,on;e,on;o,on;q:on;s,off;u,off;b,off;d,off;f,off;p,off
+s,on;u,on;b,on;d,on;f,on;p,on;r,on;t,off;a,off;c,off;e,off;o,off;q,off
+t,on;a,on;c,on;e,on;o,on;q,on;s,on;u,off;b,off;d,off;f,off;p,off;r,off
+u,on;b,on;d,on;f,on;p,on;r,on;t,on;a,off;c,off;e,off;o,off;q,off;s,off

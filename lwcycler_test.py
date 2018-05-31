@@ -45,6 +45,7 @@ if __name__ == "__main__":
 	while True:
 		for line in cmd_list:
 			print("line is ", line)
+			sleep(sleeptime)
 			for cmd in line.split(';'):
 				print("cmd is  ", cmd)
 				cmd_element1 = cmd.split(',')[0]
@@ -60,7 +61,7 @@ if __name__ == "__main__":
 				DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_GROUP, LW14_MODE_DACP)	    #Set the dali address for send data, in this case single device and DACP bit
 				DaliBus_Bar1.SendData(dali_value)												#Send data into the dali bus
 				DaliBus_Bar1.WaitForReady() 													#Wait until DALI is ready. DON'T FORGET IT!!!!!
-				sleep(sleeptime)
+				sleep(0,210)
 
 
 
