@@ -178,9 +178,9 @@ class lw14:
 		while(1):
 			
 			r = self._i2c_read(LW14_REG_STATUS) #returns an array
-			#print("in WaitForReady, r is", r)
+			print("in WaitForReady, r is", r)
 			#debug output
-			#print ("Status: {0}".format(r[0]))
+			print ("Status: {0}".format(r[0]))
 		
 			if (r[0] & LW14_STATE_BUS_FAULT) == LW14_STATE_BUS_FAULT:
 				return RET_ERROR
