@@ -45,15 +45,15 @@ if __name__ == "__main__":
 	while True:
 		for line in cmd_list:
 			print("line is ", line)
-			sleep(sleeptime)
+			#sleep(sleeptime)
 			for cmd in line.split(';'):
-				print("cmd is  ", cmd)
+				#print("cmd is  ", cmd)
 				cmd_element1 = cmd.split(',')[0]
 				cmd_element2 = cmd.split(',')[1]
-				print("cmd_element1, cmd_element2 are:  ", cmd_element1, cmd_element2)																
-				print("net_dict value is  ",net_dict[cmd_element1])
+				#print("cmd_element1, cmd_element2 are:  ", cmd_element1, cmd_element2)																
+				#print("net_dict value is  ",net_dict[cmd_element1])
 				dali_bus = I2C_values[net_dict[cmd_element1]]
-				print("dali_bus is  ",dali_bus)
+				#print("dali_bus is  ",dali_bus)
 				DaliBus_Bar1.SetI2cBus(dali_bus)
 				dali_device = grp_dict[cmd_element1]
 				if cmd_element2 == "on": dali_value = onval
