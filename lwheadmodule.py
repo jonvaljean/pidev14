@@ -176,7 +176,7 @@ class lw14:
 	#Check the status register
 	def WaitForReady(self):
 		while(1):
-			
+			sleep(0.01)
 			r = self._i2c_read(LW14_REG_STATUS) #returns an array
 			print("in WaitForReady, r is", r)
 			#debug output
