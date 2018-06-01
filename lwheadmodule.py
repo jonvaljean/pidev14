@@ -144,7 +144,7 @@ class lw14:
 		sleep(0.005)  #added JJC      
 		#try to send data
 		try:
-	  	return i2c.write_i2c_block_data(self.i2c_bus, LW14_REG_COMMAND, data)
+			return i2c.write_i2c_block_data(self.i2c_bus, LW14_REG_COMMAND, data)
 		except IOError as e:
 			print ("I/O error({0}): {1}".format(e.errno, e.strerror))
 			return RET_ERROR
