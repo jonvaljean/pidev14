@@ -1,5 +1,5 @@
-a,on
-b,on
+a,on;t,off
+b,on;u,off
 c,on;a,off
 d,on;b,off
 e,on;c,off
@@ -11,5 +11,3 @@ r,on;p,off
 s,on;q,off
 t,on;r,off
 u,on;s,off
-t,off
-u,off

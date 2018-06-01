@@ -141,7 +141,7 @@ class lw14:
 
 	#send method from SMBus API from linux / python
 	def _i2c_write(self, data):
-  	        
+  	  sleep(0.005)  #added JJC      
 	    #try to send data
 	    try:
 	        return i2c.write_i2c_block_data(self.i2c_bus, LW14_REG_COMMAND, data)
@@ -150,7 +150,7 @@ class lw14:
 	        return RET_ERROR
 
 	def _i2c_read(self, reg):
-
+		sleep(0.005)  #added JJC
 		try:
 			return i2c.read_i2c_block_data(self.i2c_bus, reg)
 		except IOError as e:
@@ -176,11 +176,11 @@ class lw14:
 	#Check the status register
 	def WaitForReady(self):
 		while(1):
-			sleep(0.01)
+			#sleep(0.005)
 			r = self._i2c_read(LW14_REG_STATUS) #returns an array
-			print("in WaitForReady, r is", r)
+			#print("in WaitForReady, r is", r)
 			#debug output
-			print ("Status: {0}".format(r[0]))
+			#print ("Status: {0}".format(r[0]))
 		
 			if (r[0] & LW14_STATE_BUS_FAULT) == LW14_STATE_BUS_FAULT:
 				return RET_ERROR
