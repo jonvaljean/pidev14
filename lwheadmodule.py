@@ -141,13 +141,13 @@ class lw14:
 
 	#send method from SMBus API from linux / python
 	def _i2c_write(self, data):
-  	  sleep(0.005)  #added JJC      
-	    #try to send data
-	    try:
-	        return i2c.write_i2c_block_data(self.i2c_bus, LW14_REG_COMMAND, data)
-	    except IOError as e:
-	        print ("I/O error({0}): {1}".format(e.errno, e.strerror))
-	        return RET_ERROR
+		sleep(0.005)  #added JJC      
+		#try to send data
+		try:
+	  	return i2c.write_i2c_block_data(self.i2c_bus, LW14_REG_COMMAND, data)
+		except IOError as e:
+			print ("I/O error({0}): {1}".format(e.errno, e.strerror))
+			return RET_ERROR
 
 	def _i2c_read(self, reg):
 		sleep(0.005)  #added JJC
