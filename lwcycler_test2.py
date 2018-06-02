@@ -71,7 +71,6 @@ if __name__ == "__main__":
 						break;
 						
 				dali_device = grp_dict[cmd_element1]
-				DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_GROUP, LW14_MODE_CMD)	    #Set the dali address for command, try query from cmd
 				if cmd_element2 == "on": dali_value = onval
 				if cmd_element2 == "off": dali_value = offval
 				DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_GROUP, LW14_MODE_DACP)	    #Set the dali address for send data, in this case single device and DACP bit
