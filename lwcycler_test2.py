@@ -1,4 +1,4 @@
-
+#!/usr/bin/python
 
 #Simple LED-Warrior14 scratch for send data
 from __future__ import print_function
