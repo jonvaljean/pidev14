@@ -320,6 +320,10 @@ class lw14:
 	def QueryFadeTime(self):
 		r = self.ReadQuery(DALI_QUERY_FADE_TIME_RATE)	
 		return (r & 0xF0) >> 4
+	
+	def QueryStatus(self):
+		r = self.ReadQuery(DALI_QUERY_STATUS)
+		return r
 
 
 	
