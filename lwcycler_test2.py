@@ -36,6 +36,7 @@ if __name__ == "__main__":
 	
 	print("net_dict is ",net_dict)	
 	print("I2C_values is ",I2C_values)
+	print("grp_dict is  ",grp_dict)
 	
 	F=open(filename)
 	F.seek(0)
