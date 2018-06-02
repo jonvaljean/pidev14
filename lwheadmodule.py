@@ -288,11 +288,11 @@ class lw14:
 		data = [self.dali_adr, value]
 		self._i2c_write(data)
 
-		if self.WaitForValidReply() == defs.RET_SUCCESS:
-			read = self._i2c_read(defs.LW14_REG_COMMAND)
+		if self.WaitForValidReply() == RET_SUCCESS:
+			read = self._i2c_read(LW14_REG_COMMAND)
 
 			#Clear command register
-			self._i2c_read(defs.LW14_REG_COMMAND)
+			self._i2c_read(LW14_REG_COMMAND)
 			return read[0]
 		else:
 			print ("something goes wrong on Query")
