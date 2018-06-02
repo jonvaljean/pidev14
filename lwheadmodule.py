@@ -283,6 +283,26 @@ class lw14:
 		data = [adr, 0x70 | (value & 0x0F)]
 		return self.SendStore(data)	
 
+		#Read data from DALI device NEW CODE
+	def ReadQuery(self, value):
+		data = [self.dali_adr, value]
+		self._i2c_write(data)
+
+		if self.WaitForValidReply() == defs.RET_SUCCESS:
+			read = self._i2c_read(defs.LW14_REG_COMMAND)
+
+			#Clear command register
+			self._i2c_read(defs.LW14_REG_COMMAND)
+			return read[0]
+		else:
+			print ("something goes wrong on Query")
+			return -1 
+	
+	
+	
+	
+	
+	''' OLD ReadQuery
 	#Read data from DALI device
 	def ReadQuery(self, value):
 		data = [self.dali_adr, value]
@@ -296,6 +316,7 @@ class lw14:
 		self._i2c_read(LW14_REG_COMMAND)
 
 		return read[0]
+	'''
 	
 	#Get values from querys
 	def QueryDTR(self):
