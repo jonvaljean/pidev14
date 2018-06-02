@@ -76,6 +76,9 @@ if __name__ == "__main__":
 				print("dali_device after while - should be group id is ", dali_device)
 				if cmd_element2 == "on": dali_value = onval
 				if cmd_element2 == "off": dali_value = offval
+				print("dali_bus after while is  ",dali_bus)
+				print("dali_value after while is  ",dali_value)
+				DaliBus_Bar1.SetI2cBus(dali_bus)
 				DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_GROUP, LW14_MODE_DACP)	    #Set the dali address for send data, in this case single device and DACP bit
 				DaliBus_Bar1.SendData(dali_value)												#Send data into the dali bus
 				DaliBus_Bar1.WaitForReady() 													#Wait until DALI is ready. DON'T FORGET IT!!!!!
