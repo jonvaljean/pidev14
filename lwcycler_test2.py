@@ -61,7 +61,7 @@ if __name__ == "__main__":
 				DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_CMD)	    #Set the dali address for command, try query from cmd
 
 				while(1):
-					sleep(0.10) #lets slow it down a liitle bit
+					sleep(0.5) #lets slow it down a liitle bit was .1 maybe this will work
 					res = DaliBus_Bar1.QueryStatus()
 					#debug output
 					print("Status res is ", res)
