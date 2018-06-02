@@ -9,7 +9,7 @@ from time import sleep
 
 #return values
 RET_ERROR	= -1
-RET_NONO	= 0
+RET_NONE	= 0
 RET_SUCCESS	= 1
 
 
