@@ -57,7 +57,7 @@ if __name__ == "__main__":
 				print("dali_bus is  ",dali_bus)
 				DaliBus_Bar1.SetI2cBus(dali_bus)
 				dali_device = box_dict[cmd_element1+"1"] # test status of box 1 of the group
-				print("dali_device before QueryStatus is ",dali_device)
+				print("dali_device before QueryStatus - should be 1st box of group is ",dali_device)
 				DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_CMD)	    #Set the dali address for command, try query from cmd
 
 				while(1):
@@ -72,6 +72,7 @@ if __name__ == "__main__":
 						break;
 						
 				dali_device = grp_dict[cmd_element1]
+				print("dali_device after while - should be group id is ", dali_device)
 				if cmd_element2 == "on": dali_value = onval
 				if cmd_element2 == "off": dali_value = offval
 				DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_GROUP, LW14_MODE_DACP)	    #Set the dali address for send data, in this case single device and DACP bit
