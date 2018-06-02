@@ -67,7 +67,7 @@ if __name__ == "__main__":
 					#if fade-in-progress bit is 0 than finished
 					#if res = -1 error on bus, but "ignore and go on"
 					if (res & 0x10) == 0x00:
-						print(fading ready)
+						print("fading ready")
 						break;
 				
 				
