@@ -1,4 +1,8 @@
-bla bl
+B
+B
+B
+B
+:bla bl
 
 bla bla bla bla
 :w
