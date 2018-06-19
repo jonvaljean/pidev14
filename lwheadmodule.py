@@ -195,8 +195,10 @@ class lw14:
 	#Wait until possible data will available
 	def WaitForValidReply(self):
 		while(1):
-			#sleep(0.005)
+			#JJC added
+			sleep(0.005)
 			r = self._i2c_read(LW14_REG_STATUS) #returns an array
+			print("in WaitForValidReply, r is   ",r)
 
 			if (r[0] & LW14_STATE_BUS_FAULT) == LW14_STATE_BUS_FAULT:
 				return RET_ERROR

@@ -42,7 +42,7 @@ if __name__ == "__main__":
 		return_string = "<b>" + "Spawned child, pid is:  " + str(id)
 		return return_string
 	
-	run(host='0.0.0.0', port=8080, debug=True)
+	run(host='127.0.0.1', port=8080, debug=True)
 	print("in bottlepy after run   ")
 		
 		
