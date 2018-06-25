@@ -58,8 +58,8 @@ if __name__ == "__main__":
 					print("Status res is ", res)
 					#if fade-in-progress bit is 0 than finished
 					#if res = -1 error on bus, but "ignore and go on"
-					if (res & 0x10) == 0x00:
-						print("fading ready")
+					if (res & 0x10) == 0x00 | res == -2:
+						print("fading ready or no data")
 						break;
 				
 				#print("cmd is  ", cmd)
