@@ -66,17 +66,16 @@ if __name__ == "__main__":
 					sleep(0.1) #lets slow it down a liitle bit 
 					res = DaliBus_Bar1.QueryStatus()
 					#debug output
-					print("Status res is ", res)
+					#print("Status res is ", res)
 					#if fade-in-progress bit is 0 than finished
 					#if res = -1 error on bus, but "ignore and go on"
-					#if (res & 0x10) == 0x00:
-					#	print("fading ready")
-					#	break;
-					while (res & 0x10) != 0x00:
-						print("res in loop, res is ", res)
+					if (res & 0x10) == 0x00:
+						print("fading ready")
+						break;
+					
 						
 				dali_device = grp_dict[cmd_element1]
-				#print("dali_device after while - should be group id is ", dali_device)
+				print("dali_device after while - should be group id is ", dali_device)
 				if cmd_element2 == "on": dali_value = onval
 				if cmd_element2 == "off": dali_value = offval
 				#print("dali_bus after while is  ",dali_bus)
