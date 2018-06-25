@@ -1,1 +1,12 @@
-bla bla
+B
+B
+B
+B
+:bla bl
+
+bla bla bla bla
+:w
+
+w
+C
+a
