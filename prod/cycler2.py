@@ -28,7 +28,7 @@ if __name__ == "__main__":
 		filename	= sys.argv[1]
 		onval = int(sys.argv[2])
 		offval = int(sys.argv[3])
-		#sleeptime = float(sys.argv[4])
+		sleeptime = float(sys.argv[4])
 		
 		#If no arguments ar set or to much send this to dali
 	else:
@@ -45,9 +45,11 @@ if __name__ == "__main__":
 	cmd_list = F.read().splitlines()
 	#print("cmd_list is  ", cmd_list)
 	while True:
+		sleep(sleeptime)  #instead of this, loop until fade bit is 0
+			
 		for line in cmd_list:
 			print("line is ", line)
-			#sleep(sleeptime)  instead of this, loop until fade bit is 0
+			#sleep(sleeptime)  #instead of this, loop until fade bit is 0
 			
 			for cmd in line.split(';'):
 
