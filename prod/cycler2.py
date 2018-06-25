@@ -50,18 +50,7 @@ if __name__ == "__main__":
 			#sleep(sleeptime)  instead of this, loop until fade bit is 0
 			
 			for cmd in line.split(';'):
-				#print("cmd is  ", cmd)
-				cmd_element1 = cmd.split(',')[0]
-				cmd_element2 = cmd.split(',')[1]
-				#print("cmd_element1, cmd_element2 are:  ", cmd_element1, cmd_element2)																
-				#print("net_dict value is  ",net_dict[cmd_element1])
-				dali_bus = I2C_values[net_dict[cmd_element1]]
-				#print("dali_bus is  ",dali_bus)
-				DaliBus_Bar1.SetI2cBus(dali_bus)
-				dali_device = box_dict[cmd_element1+"1"] # test status of box 1 of the group
-				#print("dali_device before QueryStatus - should be 1st box of group is ",dali_device)
-				DaliBus_Bar1.SetDaliAddress(dali_device, defs.LW14_ADR_SINGLE, defs.LW14_MODE_CMD)	    #Set the dali address for command, try query from cmd
-
+				
 				while(1):
 					sleep(0.1) #lets slow it down a liitle bit 
 					res = DaliBus_Bar1.QueryStatus()
@@ -72,6 +61,20 @@ if __name__ == "__main__":
 					if (res & 0x10) == 0x00:
 						print("fading ready")
 						break;
+				
+				#print("cmd is  ", cmd)
+				cmd_element1 = cmd.split(',')[0]
+				cmd_element2 = cmd.split(',')[1]
+				#print("cmd_element1, cmd_element2 are:  ", cmd_element1, cmd_element2)																
+				#print("net_dict value is  ",net_dict[cmd_element1])
+				dali_bus = I2C_values[net_dict[cmd_element1]]
+				print("dali_bus is  ",dali_bus)
+				DaliBus_Bar1.SetI2cBus(dali_bus)
+				dali_device = box_dict[cmd_element1+"1"] # test status of box 1 of the group
+				#print("dali_device before QueryStatus - should be 1st box of group is ",dali_device)
+				DaliBus_Bar1.SetDaliAddress(dali_device, defs.LW14_ADR_SINGLE, defs.LW14_MODE_CMD)	    #Set the dali address for command, try query from cmd
+
+
 					
 						
 				dali_device = grp_dict[cmd_element1]
