@@ -1,0 +1,13 @@
+a,on;t,off
+b,on;u,off
+c,on;a,off
+d,on;b,off
+e,on;c,off
+f,on;d,off
+o,on;e,off
+p,on;f,off
+q,on;o,off
+r,on;p,off
+s,on;q,off
+t,on;r,off
+u,on;s,off
