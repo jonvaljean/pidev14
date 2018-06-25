@@ -57,7 +57,7 @@ if __name__ == "__main__":
 		c_low = request.forms.get('low')
 		c_script = request.forms.get('script')
 		print("input parms are  ",c_high, c_low, c_script)
-		subprocess.Popen(["./cycler2.py", c_script,c_high, c_low, 2],stdout=subprocess.PIPE)
+		subprocess.Popen(["./cycler2.py", c_script,c_high, c_low, str(2)],stdout=subprocess.PIPE)
 		redirect("/lw14ask")
 		
 	@route('/spawn')
