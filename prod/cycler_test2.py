@@ -1,12 +1,13 @@
 #!/usr/bin/python
 
-#Simple LED-Warrior14 scratch for send data
 from __future__ import print_function
 import sys
 import time
 import smbus #use smbus for i2c
 from time import sleep
-from lwheadmodule import * #set to lwheadmodule_test for home testing
+import defs
+from lw14_class import *
+from mapbuild import *
 
 
 	#modify this model according to requirements of setting
@@ -59,7 +60,7 @@ if __name__ == "__main__":
 				DaliBus_Bar1.SetI2cBus(dali_bus)
 				dali_device = box_dict[cmd_element1+"1"] # test status of box 1 of the group
 				#print("dali_device before QueryStatus - should be 1st box of group is ",dali_device)
-				DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_CMD)	    #Set the dali address for command, try query from cmd
+				DaliBus_Bar1.SetDaliAddress(dali_device, defs.LW14_ADR_SINGLE, defs.LW14_MODE_CMD)	    #Set the dali address for command, try query from cmd
 
 				while(1):
 					sleep(0.1) #lets slow it down a liitle bit 
@@ -79,7 +80,7 @@ if __name__ == "__main__":
 				#print("dali_bus after while is  ",dali_bus)
 				#print("dali_value after while is  ",dali_value)
 				DaliBus_Bar1.SetI2cBus(dali_bus)
-				DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_GROUP, LW14_MODE_DACP)	    #Set the dali address for send data, in this case single device and DACP bit
+				DaliBus_Bar1.SetDaliAddress(dali_device, defs.LW14_ADR_GROUP, defs.LW14_MODE_DACP)	    #Set the dali address for send data, in this case single device and DACP bit
 				DaliBus_Bar1.SendData(dali_value)												#Send data into the dali bus
 				DaliBus_Bar1.WaitForReady() 													#Wait until DALI is ready. DON'T FORGET IT!!!!!
 				sleep(0.100)
