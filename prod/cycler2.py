@@ -11,7 +11,7 @@ from mapbuild import *
 
 
 	#modify this model according to requirements of setting
-NR_ARGS = 3 
+NR_ARGS = 4 
 
 
 
