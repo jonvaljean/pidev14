@@ -52,7 +52,7 @@ if __name__ == "__main__":
 			for cmd in line.split(';'):
 				
 				while(1):
-					sleep(0.1) #lets slow it down a liitle bit 
+					sleep(1) #lets slow it down a liitle bit 
 					res = DaliBus_Bar1.QueryStatus()
 					#debug output
 					print("Status res is ", res)
