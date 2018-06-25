@@ -59,7 +59,7 @@ if __name__ == "__main__":
 					#if fade-in-progress bit is 0 than finished
 					#if res = -1 error on bus, but "ignore and go on"
 					if res == -2 :
-						print("res is -1")
+						print("res is -2")
 						break
 					if (res & 0x10) == 0x00 :
 						print("fading ready or no data")
@@ -84,8 +84,8 @@ if __name__ == "__main__":
 				print("dali_device after while - should be group id is ", dali_device)
 				if cmd_element2 == "on": dali_value = onval
 				if cmd_element2 == "off": dali_value = offval
-				#print("dali_bus after while is  ",dali_bus)
-				#print("dali_value after while is  ",dali_value)
+				print("dali_bus after while is  ",dali_bus)
+				print("dali_value after while is  ",dali_value)
 				DaliBus_Bar1.SetI2cBus(dali_bus)
 				DaliBus_Bar1.SetDaliAddress(dali_device, defs.LW14_ADR_GROUP, defs.LW14_MODE_DACP)	    #Set the dali address for send data, in this case single device and DACP bit
 				DaliBus_Bar1.SendData(dali_value)												#Send data into the dali bus
