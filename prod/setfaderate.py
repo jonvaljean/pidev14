@@ -52,8 +52,8 @@ if __name__ == "__main__":
 	else:
 		DaliBus_Bar1.SetDaliAddress(dali_device, defs.LW14_ADR_SINGLE, defs.LW14_MODE_CMD)
 	
-	#store DTR level as fade time
-	DaliBus_Bar1.StoreFadeTime()
+	#store DTR level as fade rate
+	DaliBus_Bar1.StoreFadeRate()
 	DaliBus_Bar1.WaitForReady()
 	
 
