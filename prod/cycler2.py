@@ -69,9 +69,11 @@ if __name__ == "__main__":
 					print("Status res is ", res)
 					#if fade-in-progress bit is 0 than finished
 					#if res = -1 error on bus, but "ignore and go on"
-					if (res & 0x10) == 0x00:
-						print("fading ready")
-						break;
+					#if (res & 0x10) == 0x00:
+					#	print("fading ready")
+					#	break;
+					while (res & 0x10) != 0x00:
+						print("res in loop, res is ", res)
 						
 				dali_device = grp_dict[cmd_element1]
 				#print("dali_device after while - should be group id is ", dali_device)
