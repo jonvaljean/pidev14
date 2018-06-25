@@ -1,4 +1,4 @@
-	'''Read Dali assignments from files to create internal map in form of dicts'''
+'''Read Dali assignments from files to create internal map in form of dicts'''
 import defs
 
 I2C_values = {}
