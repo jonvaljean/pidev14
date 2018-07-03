@@ -1,4 +1,5 @@
 #!/usr/bin/python
+#first time using pycharm see if git works
 
 from __future__ import print_function
 import sys
@@ -49,7 +50,7 @@ if __name__ == "__main__":
 			
 		for line in cmd_list:
 			print("line is ", line)
-			#sleep(sleeptime)  #instead of this, loop until fade bit is 0
+			sleep(1)
 			
 			for cmd in line.split(';'):
 
