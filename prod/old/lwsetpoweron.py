@@ -6,7 +6,7 @@ import sys
 import time
 import smbus #use smbus for i2c
 from time import sleep
-from lwheadmodule import *
+from old.lwheadmodule import *
 
 
 	#modify this model according to requirements of setting
@@ -52,7 +52,7 @@ if __name__ == "__main__":
 		DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_CMD)
 	
 	#store DTR level as fade rate
-	DaliBus_Bar1.StoreSysFail()
+	DaliBus_Bar1.StorePowerOn()
 	DaliBus_Bar1.WaitForReady()
 	
 

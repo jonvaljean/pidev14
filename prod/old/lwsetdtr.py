@@ -5,7 +5,7 @@ import sys
 import time
 import smbus #use smbus for i2c
 from time import sleep
-from lwheadmodule import *
+from old.lwheadmodule import *
 	
 	#modify this model according to requirements of setting
 NR_ARGS = 1

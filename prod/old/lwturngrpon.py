@@ -2,15 +2,13 @@
 
 #Simple LED-Warrior14 scratch for send data
 from __future__ import print_function
-import sys
-import time
-import smbus #use smbus for i2c
-from time import sleep
-from lwheadmodule import *
+from old.lwheadmodule import *
+# Simple LED-Warrior14 scratch for send data
+from __future__ import print_function
 
+from old.lwheadmodule import *
 
-	
-	#modify this model according to requirements of setting
+#modify this model according to requirements of setting
 NR_ARGS = 1
 
 

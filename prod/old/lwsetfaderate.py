@@ -6,7 +6,7 @@ import sys
 import time
 import smbus #use smbus for i2c
 from time import sleep
-from lwheadmodule import *
+from old.lwheadmodule import *
 
 
 	#modify this model according to requirements of setting
@@ -39,23 +39,21 @@ if __name__ == "__main__":
 	DaliBus_Bar1.SetI2cBus(dali_bus)									#Set I2C-Address to the class
 	dali_device = box_dict[parm_1]
 	
-		
-		#choose between broadcast and single device. 255 is gotten from map table if x or y is chosen
-	if dali_device == 255:
-		DaliBus_Bar1.SetDaliAddress(LW14_BROADCAST, LW14_ADR_GROUP, LW14_MODE_DACP)	
-	else:
-		DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_DACP)
-	
 	dali_value = parm_2
 
-	#Send Data test
-	#DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_DACP)	    #Set the dali address for send data, in this case single device and DACP bit
-	#DaliBus_Bar1.SetDaliAddress(LW14_BROADCAST, LW14_ADR_GROUP, LW14_MODE_DACP)	#Set the dali as broadcast
+	DaliBus_Bar1.SetDTR(dali_value)
+	DaliBus_Bar1.WaitForReady()
+
 	
-	DaliBus_Bar1.SendData(dali_value)												#Send data into the dali bus
-	DaliBus_Bar1.WaitForReady() 													#Wait until DALI is ready. DON'T FORGET IT!!!!!
-
-
-
+	#choose between broadcast and single device. 255 is gotten from map table if x or y is chosen
+	if dali_device == 255:
+		DaliBus_Bar1.SetDaliAddress(LW14_BROADCAST, LW14_ADR_GROUP, LW14_MODE_CMD)	
+	else:
+		DaliBus_Bar1.SetDaliAddress(dali_device, LW14_ADR_SINGLE, LW14_MODE_CMD)
+	
+	#store DTR level as fade rate
+	DaliBus_Bar1.StoreFadeRate()
+	DaliBus_Bar1.WaitForReady()
+	
 
 	

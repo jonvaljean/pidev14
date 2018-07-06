@@ -1,8 +1,6 @@
 #!/usr/bin/python
 # first time using pycharm see if git works here is a change again
-# set column wait to 2 secs to see if it fails less frequently. 1 sec before
-# first command in line execution, 1 sec after line command,
-# 300 ms before start of check status while loop
+
 
 from __future__ import print_function
 import sys
@@ -67,7 +65,7 @@ if __name__ == "__main__":
                                             defs.LW14_MODE_CMD)  # Set the dali address for command, try query from cmd
 
                 while (1):
-                    sleep(0.3)  # lets slow it down a liitle bit
+                    sleep(0.1)  # lets slow it down a liitle bit
                     res = DaliBus_Bar1.QueryStatus()
                     # debug output
                     print("Status res is ", res)
@@ -91,4 +89,4 @@ if __name__ == "__main__":
                                             defs.LW14_MODE_DACP)  # Set the dali address for send data, in this case single device and DACP bit
                 DaliBus_Bar1.SendData(dali_value)  # Send data into the dali bus
                 DaliBus_Bar1.WaitForReady()  # Wait until DALI is ready. DON'T FORGET IT!!!!!
-                sleep(1)
+                sleep(0.100)
