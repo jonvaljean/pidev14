@@ -4,29 +4,7 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5abfc8b7-77f8-42fd-b59f-7af0bc0b8394" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cycler4py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/old/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/setters/__init__.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lwcycler_test2.py" afterPath="$PROJECT_DIR$/old/lwcycler_test2.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lwheadmodule.py" afterPath="$PROJECT_DIR$/old/lwheadmodule.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lwsetdtr.py" afterPath="$PROJECT_DIR$/old/lwsetdtr.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lwsetfaderate.py" afterPath="$PROJECT_DIR$/old/lwsetfaderate.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lwsetfadetime.py" afterPath="$PROJECT_DIR$/old/lwsetfadetime.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lwsetpoweron.py" afterPath="$PROJECT_DIR$/old/lwsetpoweron.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lwsetsysfail.py" afterPath="$PROJECT_DIR$/old/lwsetsysfail.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lwturnboxoff.py" afterPath="$PROJECT_DIR$/old/lwturnboxoff.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lwturnboxon.py" afterPath="$PROJECT_DIR$/old/lwturnboxon.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lwturnboxto.py" afterPath="$PROJECT_DIR$/old/lwturnboxto.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lwturngrpoff.py" afterPath="$PROJECT_DIR$/old/lwturngrpoff.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lwturngrpon.py" afterPath="$PROJECT_DIR$/old/lwturngrpon.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/lwturngrpto.py" afterPath="$PROJECT_DIR$/old/lwturngrpto.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/setfaderate.py" afterPath="$PROJECT_DIR$/setters/setfaderate.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/setfadetime.py" afterPath="$PROJECT_DIR$/setters/setfadetime.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/setpoweron.py" afterPath="$PROJECT_DIR$/setters/setpoweron.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/setsysfail.py" afterPath="$PROJECT_DIR$/setters/setsysfail.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cycler3.py" afterPath="$PROJECT_DIR$/cycler3.py" />
-    </list>
+    <list default="true" id="5abfc8b7-77f8-42fd-b59f-7af0bc0b8394" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -195,7 +173,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="31" width="1026" height="741" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2657841" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -204,7 +181,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901135" sideWeight="0.49592668" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32901135" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
