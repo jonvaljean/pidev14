@@ -61,7 +61,7 @@ if __name__ == "__main__":
         dali_bus = I2C_values[net_dict[cmd_element1[0]]]
         print("dali_bus is  ", dali_bus)
         DaliBus_Bar1.SetI2cBus(dali_bus)
-        dali_device = box_dict[cmd_element1 + "1"]  # test status of box 1 of the group
+        dali_device = box_dict[cmd_element1]
         # print("dali_device before QueryStatus - should be 1st box of group is ",dali_device)
         DaliBus_Bar1.SetDaliAddress(dali_device, defs.LW14_ADR_SINGLE,defs.LW14_MODE_CMD)  # Set the dali address for command, try query from cmd
 
