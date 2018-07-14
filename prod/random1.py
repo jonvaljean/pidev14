@@ -51,7 +51,7 @@ if __name__ == "__main__":
     # print("cmd_list is  ", cmd_list)
     while True:
         sleep(sleeptime)  # instead of this, loop until fade bit is 0
-        box_id_key = random.randint(0,len(box_dict)-2)
+        box_id_key = random.randint(0,len(boxes))
         print("box_id_key is  ",box_id_key)
         cmd_element1 = boxes[box_id_key]
         print("box_id_key, cmd_element1 is  ",box_id_key, cmd_element1)
