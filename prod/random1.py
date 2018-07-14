@@ -57,7 +57,7 @@ if __name__ == "__main__":
         cmd_element2 = 'on'
         # print("cmd_element1, cmd_element2 are:  ", cmd_element1, cmd_element2)
         # print("net_dict value is  ",net_dict[cmd_element1])
-        dali_bus = I2C_values[net_dict[cmd_element1]]
+        dali_bus = I2C_values[net_dict[cmd_element1[0]]]
         print("dali_bus is  ", dali_bus)
         DaliBus_Bar1.SetI2cBus(dali_bus)
         dali_device = box_dict[cmd_element1 + "1"]  # test status of box 1 of the group
