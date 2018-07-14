@@ -53,6 +53,7 @@ if __name__ == "__main__":
         sleep(sleeptime)  # instead of this, loop until fade bit is 0
         box_id_key = random.randint(0,len(box_dict))
         cmd_element1 = boxes[box_id_key]
+        print("box_id_key, cmd_element1 is  ",box_id_key, cmd_element1)
         cmd_element2 = 'on'
         # print("cmd_element1, cmd_element2 are:  ", cmd_element1, cmd_element2)
         # print("net_dict value is  ",net_dict[cmd_element1])
