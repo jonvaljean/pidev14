@@ -52,6 +52,7 @@ if __name__ == "__main__":
     while True:
         sleep(sleeptime)  # instead of this, loop until fade bit is 0
         box_id_key = random.randint(0,len(box_dict))
+        print("box_id_key is  ",box_id_key)
         cmd_element1 = boxes[box_id_key]
         print("box_id_key, cmd_element1 is  ",box_id_key, cmd_element1)
         cmd_element2 = 'on'
@@ -98,6 +99,6 @@ if __name__ == "__main__":
             DaliBus_Bar1.SetI2cBus(dali_bus)
             DaliBus_Bar1.SetDaliAddress(dali_device, defs.LW14_ADR_SINGLE,
                     defs.LW14_MODE_DACP)  # Set the dali address for send data, in this case single device and DACP bit
-            DaliBus_Bar1.SendData(dali_value)  # Send data into the dali bus
+            DaliBus_Bar1.SendData(dali_v    alue)  # Send data into the dali bus
             DaliBus_Bar1.WaitForReady()  # Wait until DALI is ready. DON'T FORGET IT!!!!!
             sleep(sleeptime)
