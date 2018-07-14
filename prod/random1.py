@@ -15,7 +15,7 @@ from lw14_class import *
 from mapbuild import *
 
 # modify this model according to requirements of setting
-NR_ARGS = 4
+NR_ARGS = 3
 
 # run the programm
 if __name__ == "__main__":
@@ -26,10 +26,10 @@ if __name__ == "__main__":
     # parm is cycle file name
 
     if len(sys.argv) == NR_ARGS + 1:
-        filename = sys.argv[1]
-        onval = int(sys.argv[2])
-        offval = int(sys.argv[3])
-        sleeptime = float(sys.argv[4])
+
+        onval = int(sys.argv[1])
+        offval = int(sys.argv[2])
+        sleeptime = float(sys.argv[3])
 
     # If no arguments ar set or to much send this to dali
     else:
