@@ -39,8 +39,8 @@ if __name__ == "__main__":
 
     boxes = []
     for i in range(2,len(box_dict)): #first two rows are x, y not used
-        boxes[i][0]=box_dict.keys()[i]
-        boxes[i][1]=box_dict.values()[i]
+        boxes.insert(i-2,box_dict.keys()[i])
+
     print("boxes is   ",boxes)
     # print("net_dict is ",net_dict)
     # print("I2C_values is ",I2C_values)
@@ -51,7 +51,7 @@ if __name__ == "__main__":
     while True:
         sleep(sleeptime)  # instead of this, loop until fade bit is 0
         box_id_key = random.randint(0,len(box_dict))
-        cmd_element1 = boxes[box_id_key][0]
+        cmd_element1 = boxes[box_id_key]
         cmd_element2 = 'on'
         # print("cmd_element1, cmd_element2 are:  ", cmd_element1, cmd_element2)
         # print("net_dict value is  ",net_dict[cmd_element1])
