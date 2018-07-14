@@ -39,6 +39,7 @@ if __name__ == "__main__":
 
     boxes = []
     for i in range(2,len(box_dict)): #first two rows are x, y not used
+        print("i, key corresponding  ",i,box_dict.keys()[i])
         boxes.insert(i-2,box_dict.keys()[i])
 
     print("boxes is   ",boxes)
