@@ -10,7 +10,7 @@ I2C_values[4]=defs.LW14_I2C_ADDRESS_4
 #create dictionary mapping box names to dali addresses
 box_dict = {}
 F=open('box_to_dali_map.txt')
-counter=1
+counter=0
 for line in F:
 	box_dict[line.rstrip().split(',')[0]]=int(line.rstrip().split(',')[1])
 	counter += 1

@@ -49,7 +49,7 @@
       <file leaf-file-name="box_to_dali_map.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/box_to_dali_map.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1128">
+            <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -59,8 +59,8 @@
       <file leaf-file-name="mapbuild.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mapbuild.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="14" column="45" lean-forward="false" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
+            <state relative-caret-position="221">
+              <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -423,7 +423,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/box_to_dali_map.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1128">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -431,8 +431,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mapbuild.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="14" column="45" lean-forward="false" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
+        <state relative-caret-position="221">
+          <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
           <folding />
         </state>
       </provider>
