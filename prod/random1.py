@@ -43,6 +43,7 @@ if __name__ == "__main__":
         boxes.insert(i-2,box_dict.keys()[i])
 
     print("boxes is   ",boxes)
+    print("boxes length is  ", len(boxes))
     # print("net_dict is ",net_dict)
     # print("I2C_values is ",I2C_values)
     # print("grp_dict is  ",grp_dict)
@@ -51,7 +52,7 @@ if __name__ == "__main__":
     # print("cmd_list is  ", cmd_list)
     while True:
         sleep(sleeptime)  # instead of this, loop until fade bit is 0
-        box_id_key = random.randint(0,len(boxes))
+        box_id_key = random.randint(0,len(boxes)-1)
         print("box_id_key is  ",box_id_key)
         cmd_element1 = boxes[box_id_key]
         print("box_id_key, cmd_element1 is  ",box_id_key, cmd_element1)
