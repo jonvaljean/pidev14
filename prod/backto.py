@@ -1,9 +1,9 @@
 #!/usr/bin/python
 
-#program to control front room lights.
-#first parm is on value for group 0: Theke 1 (left) lights
-#second parm is on value for group 1: Theke 2 (right) lights
-#third parm is on value for group 3: Ambient lights
+#program to control back room lights.
+#first parm is on value for group 1: middle 2 lights
+#second parm is on value for group 2: middle 4  lights
+#third parm is on value for group 3: group 3 lights
 
 
 from __future__ import print_function
@@ -34,14 +34,14 @@ if __name__ == "__main__":
 		#print out the args
 		#for eachArg in sys.argv:
 		#	print eachArg
-		grouplist = [0,0,1,3]
+		grouplist = [0,1,2,3]
 	#If no arguments ar set or to much send this to dali
 	else:
 		print("Wrong number of parameters")
 		sys.exit(0)
 		
 	DaliBus_Bar1 = lw14()														#Create a new lw14 class
-	dali_bus = I2C_values[3]
+	dali_bus = I2C_values[4]
 	DaliBus_Bar1.SetI2cBus(dali_bus)									#Set I2C-Address to the class
 
 	for index in [1,2,3]:
@@ -53,7 +53,8 @@ if __name__ == "__main__":
 		#DaliBus_Bar1.SetDaliAddress(LW14_BROADCAST, LW14_ADR_GROUP, LW14_MODE_DACP)	#Set the dali as broadcast
 		DaliBus_Bar1.SendData(dali_value)												#Send data into the dali bus
 		DaliBus_Bar1.WaitForReady()
-		sleep(2)#Wait until DALI is ready. DON'T FORGET IT!!!!!
+		sleep(2)
+		#Wait until DALI is ready. DON'T FORGET IT!!!!!
 
 
 
