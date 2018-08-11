@@ -34,7 +34,7 @@ if __name__ == "__main__":
 		#print out the args
 		#for eachArg in sys.argv:
 		#	print eachArg
-		grouplist = [0,0,1,2]
+		grouplist = [0,0,1,3]
 	#If no arguments ar set or to much send this to dali
 	else:
 		print("Wrong number of parameters")
