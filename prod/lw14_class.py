@@ -80,7 +80,7 @@ class lw14:
     def WaitForValidReply(self):
 
         while(1):
-            #sleep(0.005)
+            sleep(0.05)#modified JJC 19 Sept was .005
             r = self._i2c_read(defs.LW14_REG_STATUS) #returns an array
 
             if (r & defs.LW14_STATE_BUS_FAULT) == defs.LW14_STATE_BUS_FAULT:

@@ -15,7 +15,7 @@ for line in F:
 	box_dict[line.rstrip().split(',')[0]]=int(line.rstrip().split(',')[1])
 	counter += 1
 	print("counter is ", counter)
-print("length of box_dict is   ",len(box_dict))
+#print("length of box_dict is   ",len(box_dict))
 #create dictionary mapping column to appropriate dali network
 net_dict = {}
 F=open('col_to_dali_net_map.txt')
