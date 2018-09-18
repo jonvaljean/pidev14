@@ -84,8 +84,8 @@ if __name__ == "__main__":
             print("dali_device after while  ", dali_device)
             if cmd_element2 == "on": dali_value = onval
             if cmd_element2 == "off": dali_value = offval
-            print("dali_bus after while is  ", dali_bus)
-            print("dali_value after while is  ", dali_value)
+            #print("dali_bus after while is  ", dali_bus)
+            print("dali_value, cmd_element2 after while is  ", dali_value,cmd_element2)
             DaliBus_Bar1.SetI2cBus(dali_bus)
             DaliBus_Bar1.SetDaliAddress(dali_device, defs.LW14_ADR_SINGLE,                 defs.LW14_MODE_DACP)  # Set the dali address for send data, in this case single device and DACP bit
             DaliBus_Bar1.SendData(dali_value)  # Send data into the dali bus
@@ -95,8 +95,8 @@ if __name__ == "__main__":
 
             if cmd_element2 == "on": dali_value = onval
             if cmd_element2 == "off": dali_value = offval
-            print("dali_bus after while is  ", dali_bus)
-            print("dali_value after while is  ", dali_value)
+            #print("dali_bus after while is  ", dali_bus)
+            print("dali_value, cmd_element2 after while is  ", dali_value, cmd_element2)
             DaliBus_Bar1.SetI2cBus(dali_bus)
             DaliBus_Bar1.SetDaliAddress(dali_device, defs.LW14_ADR_SINGLE,
                     defs.LW14_MODE_DACP)  # Set the dali address for send data, in this case single device and DACP bit

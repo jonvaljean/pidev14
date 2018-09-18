@@ -14,7 +14,7 @@ counter=0
 for line in F:
 	box_dict[line.rstrip().split(',')[0]]=int(line.rstrip().split(',')[1])
 	counter += 1
-	print("counter is ", counter)
+	#print("counter is ", counter)
 #print("length of box_dict is   ",len(box_dict))
 #create dictionary mapping column to appropriate dali network
 net_dict = {}
