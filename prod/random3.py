@@ -68,17 +68,21 @@ if __name__ == "__main__":
 
 
         sleep(0.3)  # lets slow it down a liitle bit
-        res = DaliBus_Bar1.QueryStatus()
-        # debug output
-        print("Status res is ", res)
-        # if fade-in-progress bit is 0 than finished
-        # if res = -1 error on bus, but "ignore and go on"
-        if res == -2:
-             print("res is -2, no data")
-             break
-             if (res & 0x10) == 0x00:
-                 print("fading ready")
-                 break
+            while(1):
+            sleep(0.3)
+            res = DaliBus_Bar1.QueryStatus()
+            # debug output
+            print("Status res is ", res)
+            # if fade-in-progress bit is 0 than finished
+            # if res = -1 error on bus, but "ignore and go on"
+            '''
+            if res == -2:
+                print("res is -2, no data")
+                break
+            '''
+            if (res & 0x10) == 0x00:
+                print("fading ready")
+                break
 
         dali_device = box_dict[cmd_element1]
         print("dali_device after while  ", dali_device)
