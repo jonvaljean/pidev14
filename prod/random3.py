@@ -68,7 +68,7 @@ if __name__ == "__main__":
 
 
         sleep(0.3)  # lets slow it down a liitle bit
-            while(1):
+        while(1):
             sleep(0.3)
             res = DaliBus_Bar1.QueryStatus()
             # debug output
