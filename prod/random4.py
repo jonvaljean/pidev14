@@ -15,7 +15,7 @@ from lw14_class import *
 from mapbuild import *
 
 # modify this model according to requirements of setting
-NR_ARGS = 4
+NR_ARGS = 3
 
 # run the programm
 if __name__ == "__main__":
@@ -29,8 +29,7 @@ if __name__ == "__main__":
 
         onval = int(sys.argv[1])
         offval = int(sys.argv[2])
-        sleeptime_main = float(sys.argv[3])
-        sleeptime_on = float(sys.argv[4])
+        sleeptime = float(sys.argv[3])
 
     # If no arguments ar set or to much send this to dali
     else:
@@ -52,7 +51,7 @@ if __name__ == "__main__":
 
     # print("cmd_list is  ", cmd_list)
     while True:
-        sleep(sleeptime_main)  # instead of this, loop until fade bit is 0
+        sleep(sleeptime)  # instead of this, loop until fade bit is 0
         box_id_key = random.randint(0,len(boxes)-1)
         print("box_id_key is  ",box_id_key)
         cmd_element1 = boxes[box_id_key]
@@ -95,7 +94,7 @@ if __name__ == "__main__":
         DaliBus_Bar1.SetDaliAddress(dali_device, defs.LW14_ADR_SINGLE, defs.LW14_MODE_DACP)  # Set the dali address for send data, in this case single device and DACP bit
         DaliBus_Bar1.SendData(dali_value)  # Send data into the dali bus
         DaliBus_Bar1.WaitForReady()  # Wait until DALI is ready. DON'T FORGET IT!!!!!
-        sleep(sleeptime_on)
+        sleep(sleeptime)
         cmd_element2 = 'off'
 
         if cmd_element2 == "on": dali_value = onval
