@@ -70,10 +70,11 @@ if __name__ == "__main__":
 
         sleep(0.3)  # lets slow it down a liitle bit
         while(1):
-            sleep(0.3)
+            sleep(1)
             res = DaliBus_Bar1.QueryStatus()
             # debug output
             print("Status res is ", res)
+            print("dali_device, cmd_element1, cmd_element2 are ", dali_device,cmd_element1, cmd_element1)
             # if fade-in-progress bit is 0 than finished
             # if res = -1 error on bus, but "ignore and go on"
             '''
