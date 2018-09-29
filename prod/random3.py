@@ -77,11 +77,11 @@ if __name__ == "__main__":
             print("dali_device, cmd_element1, cmd_element2 are ", dali_device,cmd_element1, cmd_element2)
             # if fade-in-progress bit is 0 than finished
             # if res = -1 error on bus, but "ignore and go on"
-            '''
+
             if res == -2:
                 print("res is -2, no data")
                 break
-            '''
+
             if (res & 0x10) == 0x00:
                 print("fading ready")
                 break
